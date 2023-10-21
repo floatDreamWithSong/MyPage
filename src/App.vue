@@ -139,6 +139,7 @@ html{
   height: 100vh;
 }
 *{
+  list-style: none;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   user-select: none;
   background-color: var(--backblack);
