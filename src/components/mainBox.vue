@@ -1,7 +1,7 @@
 <template>
     <div id="mainBox">
         <div id="maintext">
-            <div id="hometext">
+            <div id="hometext" v-show="index==1">
 
             </div>
         </div>
@@ -9,12 +9,18 @@
 </template>
 <script>
 import axios from 'axios';
+import Event from '@/EventBus.vue';
 export default {
     name:'mainBox',
     data() {
         return {
-            
+            index:1
         }
+    },
+    mounted(){
+        Event.$on('changeIndex',data=>{
+            this.index=data;
+        })
     },
     created() {
         let t = ' ';

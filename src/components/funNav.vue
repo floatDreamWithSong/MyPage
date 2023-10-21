@@ -1,15 +1,20 @@
 <template>
     <div id="funNav">
-        <div id="funwel" class="funitem pressed">Home</div>
-        <div id="funblog" class="funitem">Blogs</div>
-        <div id="funpro" class="funitem">Project</div>
-        <div id="funre" class="funitem">Board</div>
+        <div @click="sendMesToMain(1)" id="funwel" class="funitem pressed">Home</div>
+        <div @click="sendMesToMain(2)" id="funblog" class="funitem">Blogs</div>
+        <div @click="sendMesToMain(3)" id="funpro" class="funitem">Project</div>
+        <div @click="sendMesToMain(4)" id="funre" class="funitem">Board</div>
     </div>
 </template>
 <script>
+import Event from '@/EventBus.vue';
 export default{
-    name:'funNav'
-
+    name:'funNav',
+    methods:{
+        sendMesToMain(i){
+            Event.$emit('changeIndex',i);
+        }
+    }
 }
 </script>
 <style scoped>
