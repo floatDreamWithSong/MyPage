@@ -10,8 +10,18 @@
 import Event from '@/EventBus.vue';
 export default{
     name:'funNav',
+    data() {
+        return {
+
+        }
+    },
     methods:{
         sendMesToMain(i){
+            let a = document.getElementsByClassName("funitem");
+            for (let ii = 0; ii < a.length; ii++) {
+                const element = a[ii];
+                element.className = ii+1==i? 'funitem pressed':'funitem';
+            }
             Event.$emit('changeIndex',i);
         }
     }
@@ -33,7 +43,6 @@ export default{
 .funitem{
     cursor: pointer;
     -webkit-text-stroke: 1px black;
-    transition: .4s;
     color: transparent;
     font-size: 1.5rem;
     padding: .5rem 1rem;
