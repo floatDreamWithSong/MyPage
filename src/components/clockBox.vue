@@ -1,7 +1,7 @@
 <template>
     <div id="clockBox">
         <div id="clock" >
-            <div id="num">{{hours}}:{{minu}}:{{sec}}</div>
+            <div id="num">{{hours}}:{{minu}}</div>
         </div>
     </div>
 </template>
@@ -10,15 +10,27 @@ export default{
     name:'clockBox',
     data(){
         return{
-            sec:6,
             minu:0,
             hours:0
         }
     },
     methods: {
         getTime(){
-
+            let d = new Date();
+            this.minu = d.getMinutes();
+            this.hours = d.getHours();
+            return 60 - d.getSeconds();
         }
+    },
+    created() {
+        let t = this.getTime();
+        setTimeout(() =>{
+            this.getTime();
+            setInterval(() => {
+                this.getTime();
+            }, 60000);
+        },t*1000);
+        
     },
 }
 </script>
