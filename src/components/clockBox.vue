@@ -10,15 +10,23 @@ export default{
     name:'clockBox',
     data(){
         return{
-            minu:0,
-            hours:0
+            minu:'0',
+            hours:'0'
         }
     },
     methods: {
         getTime(){
             let d = new Date();
-            this.minu = d.getMinutes();
-            this.hours = d.getHours();
+            let m = d.getMinutes();
+            let r = d.getHours();
+            if (m<10) {
+                m='0'+m;
+            }
+            if (r<10) {
+                r='0'+r;
+            }
+            this.minu = m;
+            this.hours = r;
             return 60 - d.getSeconds();
         }
     },
